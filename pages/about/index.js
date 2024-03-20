@@ -10,74 +10,89 @@ import { fadeIn } from "../../variants";
 import CountUp from 'react-countup';
 export const aboutData = [
   {
+    key: 'skills',
     title: 'skills',
     info: [
       {
+        key: 'web-development',
         title: 'Web Development',
         icons: [
-          <FaHtml5 />,
-          <FaCss3 />,
-          <FaJs />,
-          <FaReact />,
-          <SiNextdotjs />,
-          <SiFramer />,
-          <FaWordpress />,
+          <FaHtml5 key="html5" />,
+          <FaCss3 key="css3" />,
+          <FaJs key="js" />,
+          <FaReact key="react" />,
+          <SiNextdotjs key="nextjs" />,
+          <SiFramer key="framer" />,
+          <FaWordpress key="wordpress" />,
         ],
       },
       {
+        key: 'ui-ux-design',
         title: 'UI/UX Design',
-        icons: [<FaFigma />, <SiAdobexd />, <SiAdobephotoshop />],
+        icons: [<FaFigma key="figma" />, <SiAdobexd key="adobexd" />, <SiAdobephotoshop key="photoshop" />],
       },
     ],
   },
   {
+    key: 'awards',
     title: 'awards',
     info: [
       {
+        key: 'webby-awards',
         title: 'Webby Awards - Honoree',
         stage: '2011 - 2012',
       },
       {
+        key: 'adobe-design-achievement-awards',
         title: 'Adobe Design Achievement Awards - Finalist',
         stage: '2009 - 2010',
       },
     ],
   },
   {
+    key: 'experience',
     title: 'experience',
     info: [
       {
+        key: 'ux-ui-designer',
         title: 'UX/UI Designer - XYZ Company',
         stage: '2012 - 2023',
       },
       {
+        key: 'web-developer',
         title: 'Web Developer - ABC Agency',
         stage: '2010 - 2012',
       },
       {
+        key: 'intern',
         title: 'Intern - DEF Corporation',
         stage: '2008 - 2010',
       },
     ],
   },
   {
+    key: 'credentials',
     title: 'credentials',
     info: [
       {
+        key: 'web-development-abc-university',
         title: 'Web Development - ABC University, LA, CA',
         stage: '2011',
       },
       {
+        key: 'computer-science-diploma',
         title: 'Computer Science Diploma - AV Technical Institute',
         stage: '2009',
       },
       {
+        key: 'certified-graphic-designer',
         title: 'Certified Graphic Designer - ABC Institute, Los Angeles, CA',
         stage: '2006',
       },
     ],
   },
 ];
+
 
 
 
@@ -164,18 +179,12 @@ className='hidden md:flex md:max-w-xl xl:max-w-none mx-auto xl:mx-0 mb-8'>
     className='flex flex-col w-full  xl:max-w-[48%] h-[480px]'>
     <div className='flex gap-x-4 xl:gap-x-8 mx-auto 
     xl:mx-0 mb-4'>
-      {aboutData.map((item,itemIndex)=>{
-        return (<div 
-        key={itemIndex} 
-        className={`${index === itemIndex && 'text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300'} cursor-pointer capitalize 
-        xl:text-lg relative after:w-8 after:h-[2px]
-         after:bg-white 
-         after:absolute after:-bottom-1 after:left-0`}
-          onClick={()=> setIndex (itemIndex)}> 
-          {item.title}
-          </div>
-      );
-      })}
+{aboutData.map((item, itemIndex) => (
+  <div key={itemIndex} className={`${index === itemIndex && 'text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300'} cursor-pointer capitalize xl:text-lg relative after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0`} onClick={() => setIndex(itemIndex)}>
+    {item.title}
+  </div>
+))}
+
     </div>
    <div className='py-2  xl:py-6 flex flex-col 
    gap-y-2 xl:gap-y-4 items-center xl:items-start'>
@@ -190,9 +199,10 @@ className='hidden md:flex md:max-w-xl xl:max-w-none mx-auto xl:mx-0 mb-8'>
    <div className='hidden md:flex'></div>
    <div>{item.stage}</div>
    <div className='flex gap-x-4'>
-    {item.icons?.map((icon,itemIndex) =>{
-      return <div className='text-2xl text-white'>{icon}</div>
-    })}
+   {item.icons?.map((icon, iconIndex) => {
+  return <div key={iconIndex} className='text-2xl text-white'>{icon}</div>;
+})}
+
    </div>
   </div>
 );
